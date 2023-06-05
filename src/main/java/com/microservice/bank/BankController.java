@@ -29,12 +29,23 @@ public class BankController {
         this.bankService = bankService;
     }
 
+    /**
+     * The @receiveFileFromBank function is mapped to the POST request at 'receive-file' URL.
+     * It expects a request body containing a FileData object. It returns ResponseEntity string that indicate the status.
+     *
+     * */
     @PostMapping("/receive-file")
     public ResponseEntity<String> receiveFile(@RequestBody Bank.FileData fileData) {
         bankService.receiveFileFromHub(fileData);
         return ResponseEntity.ok("File received successfully");
     }
 
+    /**
+     * The @sendFileToBank function is responsible for sending files to a specific bank.
+     * it calls the bank service and passes the bankId, fileName, and serialised bytes from the fileContent.
+     * The function returns ResponseEntity that indicates the status of the opperation.
+     *
+     * */
     @PostMapping("/send-file/{bankId}")
     public ResponseEntity<String> sendFileToBank(@PathVariable String bankId, @RequestParam("fileName") String fileName, @RequestParam("fileContent") MultipartFile fileContent) {
         try {

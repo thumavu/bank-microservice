@@ -1,0 +1,28 @@
+version: '3'
+services:
+  bank1:
+    build:
+      context: ./bank1
+      dockerfile: Dockerfile
+    ports:
+      - 8082:8080
+    networks:
+      - banking-network
+  bank2:
+    build:
+      context: ./bank2
+      dockerfile: Dockerfile
+    ports:
+      - 8083:8080
+    networks:
+      - banking-network
+  bank3:
+    build:
+      context: ./bank3
+      dockerfile: Dockerfile
+    ports:
+      - 8084:8080
+    networks:
+      - banking-network
+networks:
+  banking-network:
