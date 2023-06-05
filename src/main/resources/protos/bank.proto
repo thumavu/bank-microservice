@@ -1,5 +1,12 @@
 syntax = "proto3";
 
+// Protobuf ia a language-agnostic serialization format
+//    used for structured (unique identifier field tags) data interchange.
+// Which means means the client and server apps could be written in two different tech stacks and still be able to communicate.
+// The protobuf compiler will generate the relevant class "Bank" which contains methods for serialization and deserialization.
+//
+// I generated my classes by running  <  protoc --java_out=/mnt/d/source/repositories/Bank/src/main/java/com/microservice/bank bank.proto >
+
 message FileData {
   string fileName = 1;
   bytes fileContent = 2;
